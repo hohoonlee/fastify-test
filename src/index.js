@@ -11,11 +11,13 @@ fastify.get('/', async (req, res) => {
 	return {hello: 'world'};
 });
 
-const routerDir = 'src/router/';
+const directoryName = path.basename(__dirname);
+const routerDir = `./${directoryName}/router/`;
 
 const loadRouter = dir => {
 	const routers = _.flatten(_.map(fg.sync([path.join(routerDir, '*.js')], {onlyFiles: true}), f => {
-		return require(f.replace('src/', './'));
+		console.log(path.join('..', f));
+		return require(path.join('..', f));
 	}));
 	_.each(routers, r => fastify.route(r));
 };

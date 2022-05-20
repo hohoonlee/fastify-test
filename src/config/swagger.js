@@ -27,7 +27,7 @@ exports.options = {
 
 		// let transformedUrl = url;
 
-		console.log(schema, url);
+		// console.log(schema, url);
 		return {schema, url};
 	}
 };

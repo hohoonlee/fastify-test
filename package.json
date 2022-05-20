@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "patch-package",
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+	"docker.build": "docker build -t fastify-test .",
+	"docker.rm": "docker stop fastify-test && docker rm fastify-test",
+	"docker.run": "docker run --name fastify-test -d -p 3300:8080 fastify-test"
   },
   "keywords": [],
   "author": "",
