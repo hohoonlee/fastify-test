@@ -1,0 +1,15 @@
+diff --git a/node_modules/fastify-swagger-deprecated/static/index.html b/node_modules/fastify-swagger-deprecated/static/index.html
+index f68be51..fe34430 100755
+--- a/node_modules/fastify-swagger-deprecated/static/index.html
++++ b/node_modules/fastify-swagger-deprecated/static/index.html
+@@ -27,6 +27,10 @@
+         margin:0;
+         background: #fafafa;
+       }
++	  .swagger-ui table tbody tr td {
++    	padding: 0 0 0;
++    	vertical-align: top;
++		}
+     </style>
+   </head>
+ 

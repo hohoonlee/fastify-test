@@ -3,6 +3,7 @@ WORKDIR /app
 
 COPY package.json .
 COPY src/ ./src/
+COPY patches/ ./patches/
 
 RUN yarn
 RUN yarn global add pm2
