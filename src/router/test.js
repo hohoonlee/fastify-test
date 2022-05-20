@@ -4,6 +4,7 @@ const routes = [
 		url: '/app/test/:id',
 		schema: {
 			description: 'TEST !!!!',
+			tags: ['test'],
 			headers: {
 				type: 'object',
 				required: ['authorization'],
