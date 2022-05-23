@@ -14,9 +14,11 @@ fastify.get('/', async (req, res) => {
 const directoryName = path.basename(__dirname);
 const routerDir = `./${directoryName}/router/`;
 
+const loadSchema = () => {
+	_.each(require('./config/schema'), s => fastify.addSchema(s));
+};
 const loadRouter = dir => {
 	const routers = _.flatten(_.map(fg.sync([path.join(routerDir, '*.js')], {onlyFiles: true}), f => {
-		console.log(path.join('..', f));
 		return require(path.join('..', f));
 	}));
 	_.each(routers, r => fastify.route(r));
@@ -24,6 +26,7 @@ const loadRouter = dir => {
 
 const start = async() => {
 	try {
+		loadSchema();
 		loadRouter(routerDir);
 		const port = process.env.PORT || 3300;
 		await fastify.listen(port, '0.0.0.0');

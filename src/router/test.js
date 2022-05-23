@@ -5,13 +5,7 @@ const routes = [
 		schema: {
 			description: 'TEST !!!!',
 			tags: ['test'],
-			headers: {
-				type: 'object',
-				required: ['authorization'],
-				properties: {
-					'authorization': {type: 'string'}
-				}
-			},
+			headers: { $ref: 'defaultHeader#' },
 			params: {
 				type: 'object',
 				properties: {
@@ -36,6 +30,7 @@ const routes = [
 			}
 		},
 		handler: async (req, res) => {
+			console.log('req:' + req.param.id)
 			return {id:req.params.id + (req.query.ver || 'X')};
 		},
 		errorHandler: async (error, req, res, done) => {
