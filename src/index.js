@@ -6,6 +6,10 @@ const fastify	= require('fastify')({
 	logger: true
 });
 fastify.register(require('fastify-swagger'), swagger.options);
+fastify.addHook('preSerialization', async (req, res, payload) => {
+	payload.code = 200;
+	return payload;
+});
 
 fastify.get('/', async (req, res) => {
 	return {hello: 'world'};
